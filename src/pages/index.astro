@@ -17,7 +17,7 @@ const interests = [
 
 <Layout>
 	<section class="intro">
-		<img class="headshot" src="/images/about/headshot.jpg" alt="Wilson Wu" />
+		<img class="headshot" src={`${import.meta.env.BASE_URL}images/about/headshot.jpg`} alt="Wilson Wu" />
 
 		<div class="intro-text">
 			<h1>Wilson Wu</h1>
@@ -46,7 +46,7 @@ const interests = [
 
 			<div class="contact-links">
 				<a href="mailto:wpwu2007@gmail.com">wpwu2007@gmail.com</a>
-				<span class="muted">    ·    </span>
+				<span class="muted">·</span>
 				<a href="https://www.linkedin.com/in/wilson-p-wu" target="_blank" rel="noopener">LinkedIn</a>
 			</div>
 		</div>
@@ -55,16 +55,21 @@ const interests = [
 	<section class="featured">
 		<div class="section-heading">
 			<h2>Featured Projects</h2>
-			<a href="/projects/">View all &rarr;</a>
+			<a href={`${import.meta.env.BASE_URL}projects/`}>View all &rarr;</a>
 		</div>
 
 		<ul class="project-list">
 			{
 				projects.map((project) => (
 					<li>
-						<a class="project-card" href={`/projects/${project.id}/`}>
+						<a class="project-card" href={`${import.meta.env.BASE_URL}projects/${project.id}/`}>
 							{project.data.image && (
-								<img class="thumb" src={project.data.image} alt="" loading="lazy" />
+								<img
+									class="thumb"
+									src={`${import.meta.env.BASE_URL}${project.data.image.replace(/^\//, "")}`}
+									alt=""
+									loading="lazy"
+								/>
 							)}
 							<div class="card-body">
 								<div class="project-card-header">
