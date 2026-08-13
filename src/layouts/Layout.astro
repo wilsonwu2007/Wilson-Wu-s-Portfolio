@@ -1,0 +1,119 @@
+---
+import "../styles/global.css";
+
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Wilson Wu",
+	description = "Wilson Wu — Electrical Engineering, UCLA. Circuit design, embedded systems, and hardware development.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<header class="site-header">
+			<nav class="wrapper nav">
+				<a class="brand" href="/">Wilson Wu</a>
+				<div class="nav-links">
+					<a href="/">Home</a>
+					<a href="/projects/">Projects</a>
+				</div>
+			</nav>
+		</header>
+
+		<main class="wrapper">
+			<slot />
+		</main>
+
+		<footer class="site-footer">
+			<div class="wrapper footer-inner">
+				<span class="muted">&copy; {new Date().getFullYear()} Wilson Wu</span>
+				<div class="footer-links">
+					<a href="mailto:wpwu2007@gmail.com">Email</a>
+					<a href="https://www.linkedin.com/in/wilson-p-wu" target="_blank" rel="noopener">LinkedIn</a>
+				</div>
+			</div>
+		</footer>
+
+		<style>
+			.site-header {
+				border-bottom: 1px solid var(--color-border);
+			}
+
+			.nav {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 1.25rem 1.5rem;
+			}
+
+			.brand {
+				font-weight: 600;
+				color: var(--color-text);
+			}
+
+			.brand:hover {
+				text-decoration: none;
+				color: var(--color-accent);
+			}
+
+			.nav-links {
+				display: flex;
+				gap: 1.5rem;
+			}
+
+			.nav-links a {
+				color: var(--color-text-muted);
+				font-size: 0.95rem;
+			}
+
+			.nav-links a:hover {
+				color: var(--color-accent);
+				text-decoration: none;
+			}
+
+			main {
+				padding: 3rem 1.5rem 4rem;
+				min-height: 60vh;
+			}
+
+			.site-footer {
+				border-top: 1px solid var(--color-border);
+				padding: 1.5rem 0;
+			}
+
+			.footer-inner {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				font-size: 0.9rem;
+			}
+
+			.footer-links {
+				display: flex;
+				gap: 1.25rem;
+			}
+
+			@media (max-width: 480px) {
+				.footer-inner {
+					flex-direction: column;
+					gap: 0.5rem;
+					text-align: center;
+				}
+			}
+		</style>
+	</body>
+</html>

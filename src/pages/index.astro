@@ -1,0 +1,259 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects"))
+	.filter((p) => p.data.featured)
+	.sort((a, b) => a.data.order - b.data.order);
+
+const interests = [
+	"Circuit Design",
+	"Embedded Systems",
+	"Electromagnetics",
+	"Hardware Development",
+	"R&D",
+];
+---
+
+<Layout>
+	<section class="intro">
+		<img class="headshot" src="/images/about/headshot.jpg" alt="Wilson Wu" />
+
+		<div class="intro-text">
+			<h1>Wilson Wu</h1>
+			<p class="muted subtitle">Electrical Engineering, University of California, Los Angeles</p>
+
+			<p>
+				I'm an Electrical Engineering student at UCLA interested in circuit design, embedded
+				systems, electromagnetics, and hardware development. I enjoy working on problems where I
+				can take concepts in physics and apply them to the design, testing, and integration of
+				real-world systems.
+			</p>
+			<p>
+				My experience spans PCB design, embedded electronics, hardware testing, and computational
+				physics research. Outside of coursework, I've worked on electrical systems for UCLA Bruin
+				Supermileage, built electronics projects through IEEE Micromouse, and explored plasma
+				physics research in the UCLA Plasma Accelerator Group.
+			</p>
+			<p class="muted">
+				Currently designing a brake chopper board for regenerative braking on a hydrogen-powered
+				car, and an FPGA and camera-based feedback system for interactive art.
+			</p>
+
+			<ul class="interests">
+				{interests.map((item) => <li>{item}</li>)}
+			</ul>
+
+			<div class="contact-links">
+				<a href="mailto:wpwu2007@gmail.com">wpwu2007@gmail.com</a>
+				<span class="muted">    ·    </span>
+				<a href="https://www.linkedin.com/in/wilson-p-wu" target="_blank" rel="noopener">LinkedIn</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="featured">
+		<div class="section-heading">
+			<h2>Featured Projects</h2>
+			<a href="/projects/">View all &rarr;</a>
+		</div>
+
+		<ul class="project-list">
+			{
+				projects.map((project) => (
+					<li>
+						<a class="project-card" href={`/projects/${project.id}/`}>
+							{project.data.image && (
+								<img class="thumb" src={project.data.image} alt="" loading="lazy" />
+							)}
+							<div class="card-body">
+								<div class="project-card-header">
+									<h3>{project.data.title}</h3>
+									{project.data.org && <span class="muted org">{project.data.org}</span>}
+								</div>
+								<p class="muted">{project.data.summary}</p>
+								{project.data.tags.length > 0 && (
+									<div class="tags">
+										{project.data.tags.map((tag) => (
+											<span class="tag">{tag}</span>
+										))}
+									</div>
+								)}
+							</div>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+
+	<style>
+		.intro {
+			display: flex;
+			gap: 2rem;
+			align-items: flex-start;
+		}
+
+		.headshot {
+			width: 128px;
+			height: 128px;
+			border-radius: 50%;
+			object-fit: cover;
+			flex-shrink: 0;
+			border: 1px solid var(--color-border);
+		}
+
+		.intro-text {
+			min-width: 0;
+		}
+
+		@media (max-width: 560px) {
+			.intro {
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+			}
+		}
+
+		.intro h1 {
+			font-size: 2.25rem;
+			margin-bottom: 0.25rem;
+		}
+
+		.subtitle {
+			font-size: 1.05rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.interests {
+			list-style: none;
+			padding: 0;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem 0.75rem;
+			margin: 1.5rem 0;
+		}
+
+		.interests li {
+			font-size: 0.85rem;
+			padding: 0.3rem 0.7rem;
+			border: 1px solid var(--color-border);
+			border-radius: 999px;
+			color: var(--color-text-muted);
+		}
+
+		.contact-links {
+			margin-top: 1rem;
+			font-size: 0.95rem;
+		}
+
+		.featured {
+			margin-top: 4rem;
+		}
+
+		.section-heading {
+			display: flex;
+			align-items: baseline;
+			justify-content: space-between;
+			border-bottom: 1px solid var(--color-border);
+			padding-bottom: 0.75rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.section-heading h2 {
+			margin: 0;
+			font-size: 1.1rem;
+			text-transform: uppercase;
+			letter-spacing: 0.04em;
+		}
+
+		.section-heading a {
+			font-size: 0.9rem;
+		}
+
+		.project-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1.25rem;
+		}
+
+		.project-card {
+			display: flex;
+			gap: 1.25rem;
+			align-items: flex-start;
+			padding: 1.25rem 1.5rem;
+			border: 1px solid var(--color-border);
+			border-radius: 10px;
+			color: var(--color-text);
+			transition: border-color 0.15s ease;
+		}
+
+		.project-card:hover {
+			border-color: var(--color-accent);
+			text-decoration: none;
+		}
+
+		.thumb {
+			width: 96px;
+			height: 96px;
+			object-fit: cover;
+			border-radius: 8px;
+			flex-shrink: 0;
+			border: 1px solid var(--color-border);
+		}
+
+		.card-body {
+			min-width: 0;
+		}
+
+		@media (max-width: 560px) {
+			.project-card {
+				flex-direction: column;
+			}
+
+			.thumb {
+				width: 100%;
+				height: auto;
+				aspect-ratio: 16 / 9;
+			}
+		}
+
+		.project-card-header {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: baseline;
+			gap: 0.5rem;
+			margin-bottom: 0.35rem;
+		}
+
+		.project-card-header h3 {
+			margin: 0;
+			font-size: 1.05rem;
+		}
+
+		.org {
+			font-size: 0.85rem;
+		}
+
+		.project-card p {
+			margin-bottom: 0.5rem;
+		}
+
+		.tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.4rem;
+		}
+
+		.tag {
+			font-size: 0.75rem;
+			color: var(--color-text-muted);
+			background: #f4f4f4;
+			padding: 0.15rem 0.55rem;
+			border-radius: 6px;
+		}
+	</style>
+</Layout>
