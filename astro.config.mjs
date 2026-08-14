@@ -1,11 +1,17 @@
 import { defineConfig } from 'astro/config';
 
-const base = '/Wilson-Wu-s-Portfolio';
+// This site is hosted at the domain root: the repository is named
+// wilsonwu2007.github.io, which GitHub Pages treats as a user site and
+// serves at https://wilsonwu2007.github.io/ directly (no subpath), unlike
+// a regular project repo which would be served at a /repo-name/ subpath.
+// `base` stays empty (Astro defaults to "/") so internal links and asset
+// paths resolve correctly. If this site is ever moved back to a project
+// repo hosted at a subpath, set base to that subpath here again.
+const base = '';
 
-// Markdown images are referenced as root-relative paths (e.g. "/images/...")
-// which only work when the site is hosted at the domain root. On GitHub
-// Pages this site is hosted at a subpath (`base`), so this plugin rewrites
-// any root-relative image URL in Markdown content to include that subpath.
+// Markdown images are referenced as root-relative paths (e.g. "/images/...").
+// This plugin would prefix them with `base` if one is set, so content
+// authoring doesn't need to change even if the hosting subpath changes.
 function remarkBaseImages() {
 	return (tree) => {
 		function visit(node) {
@@ -28,7 +34,6 @@ function remarkBaseImages() {
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://wilsonwu2007.github.io',
-	base: `${base}/`,
 	markdown: {
 		remarkPlugins: [remarkBaseImages],
 	},
