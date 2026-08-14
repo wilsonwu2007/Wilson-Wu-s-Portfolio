@@ -24,11 +24,11 @@ Built a gacha-style vending machine that dispenses thrifted clothing in capsule 
 
 ## Electrical Implementation
 
-- Integrated the BTS7960 motor driver with the ESP32-S3 to control the carousel.
-- Held the motor driver's enable pins LOW during boot to prevent unintended motor movement before firmware initialization.
-- Used a rotary encoder interrupt to track carousel position and control the motor's stopping position.
-- Implemented a speed ramp near the target position to reduce carousel overshoot.
-- Calibrated the joystick on startup and added debounce logic to prevent accidental activation.
+- Integrated the **BTS7960 motor driver** with the ESP32-S3 to control the carousel.
+- Held the motor driver's **enable pins LOW** during boot to prevent unintended motor movement before firmware initialization.
+- Used a **rotary encoder interrupt** to track carousel position and control the motor's stopping position.
+- Implemented a **speed ramp** near the target position to reduce carousel overshoot.
+- Calibrated the joystick on startup and added **debounce logic** to prevent accidental activation.
 - Tuned encoder counts and motor speed through repeated physical testing to achieve consistent capsule dispensing.
 
 ## Challenges

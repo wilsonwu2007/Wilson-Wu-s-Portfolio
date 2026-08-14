@@ -32,24 +32,24 @@ My team and I designed and built an autonomous robot capable of navigating a 16Ã
 
 **Wall-Sensing Circuit**
 
-- Used four IR emitter-receiver pairs for front, back, left, and right wall detection. IR emitters send light pulses toward the wall, and reflected IR is detected by the receivers.
-- Used MOSFETs to switch the IR emitters from the 3.3 V supply rather than driving them directly from the STM32 GPIO, allowing higher emitter current while protecting the microcontroller.
+- Used **four IR emitter-receiver pairs** for front, back, left, and right wall detection. IR emitters send light pulses toward the wall, and reflected IR is detected by the receivers.
+- Used **MOSFETs** to switch the IR emitters from the 3.3 V supply rather than driving them directly from the STM32 GPIO, allowing higher emitter current while protecting the microcontroller.
 
 ![Wall-sensing IR circuit schematic](/images/projects/micromouse/schematic-wall-sensing.png)
 
 **H-Bridge Motor Driver**
 
-- Used the L293DD dual H-bridge to control the left and right DC motors, with H-bridge inputs connected to STM32 GPIOs for direction control.
-- Separated motor and logic grounds to reduce noise in the STM32 and IR sensing circuits.
+- Used the **L293DD dual H-bridge** to control the left and right DC motors, with H-bridge inputs connected to STM32 GPIOs for direction control.
+- Separated **motor and logic grounds** to reduce noise in the STM32 and IR sensing circuits.
 
 ![H-bridge motor driver schematic](/images/projects/micromouse/schematic-h-bridge.png)
 
 ## PCB Implementation
 
-- Kept the PCB compact to reduce weight and maintain balanced weight distribution.
-- Placed IR emitters and receivers along the board edges for clear wall detection.
-- Placed decoupling capacitors close to IC power pins to reduce power-supply noise.
-- Optimized component placement to minimize vias and keep routing short and simple.
+- Kept the PCB **compact** to reduce weight and maintain balanced weight distribution.
+- Placed **IR emitters and receivers** along the board edges for clear wall detection.
+- Placed **decoupling capacitors** close to IC power pins to reduce power-supply noise.
+- Optimized component placement to **minimize vias** and keep routing short and simple.
 
 ![PCB layout render](/images/projects/micromouse/pcb-layout.png)
 
@@ -63,6 +63,6 @@ A handful of pin and peripheral conflicts surfaced during firmware integration.
 
 ![Assembled Micromouse board](/images/projects/micromouse/physical-photo.jpg)
 
-The robot can move, but flood fill, movement primitives, and the main state machine remain incomplete. IR thresholds and PID gains have not yet been calibrated on hardware.
+The robot can move, but **flood fill, movement primitives, and the main state machine** remain incomplete. IR thresholds and PID gains have not yet been calibrated on hardware.
 
 Looking back, I would create a peripheral and pin map before PCB layout, prioritizing required timers and ADC channels to avoid the conflicts discovered during firmware integration.

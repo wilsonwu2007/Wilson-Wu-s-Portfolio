@@ -15,9 +15,9 @@ Particle accelerators are used in medical treatments, X-ray generation, and phys
 
 ## What I Did
 
-- Built numerical models of a driven pendulum oscillator to simulate autoresonant wave amplitude growth under different drive constants, validating behavior against theoretical predictions.
-- Configured and ran OSIRIS particle-in-cell simulations, simulating electromagnetic waves propagating into plasma.
-- Wrote a Python data pipeline using SciPy, NumPy, and matplotlib to process simulation outputs and visualize laser field envelopes and plasma wave dynamics.
+- Built **numerical models** of a driven pendulum oscillator to simulate autoresonant wave amplitude growth under different drive constants, validating behavior against theoretical predictions.
+- Configured and ran **OSIRIS particle-in-cell simulations**, simulating electromagnetic waves propagating into plasma.
+- Wrote a **Python data pipeline** using SciPy, NumPy, and matplotlib to process simulation outputs and visualize laser field envelopes and plasma wave dynamics.
 
 **Tools:** OSIRIS (UCLA-developed particle-in-cell simulation framework), Python (SciPy, NumPy, matplotlib)
 
@@ -25,17 +25,17 @@ Particle accelerators are used in medical treatments, X-ray generation, and phys
 
 **Auto-resonant control of a nonlinear pendulum**
 
-- Simulated a driven nonlinear oscillator across four drive strengths to characterize autoresonant behavior.
-- Analyzed the effects of drive strength and frequency chirping on phase-locking and amplitude growth.
-- Validated the numerical model by reproducing the expected autoresonance threshold and growth behavior reported in published research.
+- **Simulated** a driven nonlinear oscillator across four drive strengths to characterize autoresonant behavior.
+- **Analyzed** the effects of drive strength and frequency chirping on phase-locking and amplitude growth.
+- **Validated** the numerical model by reproducing the expected autoresonance threshold and growth behavior reported in published research.
 
 ![Pendulum oscillator autoresonance simulation across drive constants](/images/projects/plasma-autoresonance-research/pendulum-graph.png)
 
 **Auto-resonant control of PWBA using laser chirping**
 
-- Modeled plasma beat-wave dynamics with different chirp rates.
-- Compared chirped and unchirped wave growth.
-- Validated sustained amplitude growth under autoresonance.
+- **Modeled** plasma beat-wave dynamics with different chirp rates.
+- **Compared** chirped and unchirped wave growth.
+- **Validated** sustained amplitude growth under autoresonance.
 
 ![Plasma beat wave acceleration under three chirp modes](/images/projects/plasma-autoresonance-research/chirp-graph.png)
 
