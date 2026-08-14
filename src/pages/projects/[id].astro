@@ -14,7 +14,7 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 ---
 
-<Layout title={`${project.data.title} — Wilson Wu`} description={project.data.summary}>
+<Layout title={`${project.data.title} | Wilson Wu`} description={project.data.summary}>
 	<a class="back-link" href={`${import.meta.env.BASE_URL}projects/`}>&larr; All projects</a>
 
 	<article>

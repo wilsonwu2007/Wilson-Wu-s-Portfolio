@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 const projects = (await getCollection("projects")).sort((a, b) => a.data.order - b.data.order);
 ---
 
-<Layout title="Projects — Wilson Wu" description="Selected engineering projects by Wilson Wu.">
+<Layout title="Projects | Wilson Wu" description="Selected engineering projects by Wilson Wu.">
 	<h1>Projects</h1>
 	<p class="muted intro-text">
 		A selection of hardware, embedded systems, and research projects I've worked on.
