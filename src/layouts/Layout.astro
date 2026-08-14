@@ -5,11 +5,13 @@ import "../styles/global.css";
 interface Props {
 	title?: string;
 	description?: string;
+	wide?: boolean;
 }
 
 const {
 	title = "Wilson Wu",
 	description = "Wilson Wu. Electrical Engineering, UCLA. Circuit design, embedded systems, and hardware development.",
+	wide = false,
 } = Astro.props;
 ---
 
@@ -35,7 +37,7 @@ const {
 			</nav>
 		</header>
 
-		<main class="wrapper">
+		<main class:list={["wrapper", { wide }]}>
 			<slot />
 		</main>
 
@@ -89,6 +91,10 @@ const {
 			main {
 				padding: 3rem 1.5rem 4rem;
 				min-height: 60vh;
+			}
+
+			main.wide {
+				max-width: 62rem;
 			}
 
 			.site-footer {
